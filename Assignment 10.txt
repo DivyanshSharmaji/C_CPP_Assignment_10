@@ -1,0 +1,250 @@
+Assignment - 10 A Job Ready Bootcamp in C++, DSA and IOT MySirG
+
+Functions in C Language
+1. Write a function to calculate the area of a circle. (TSRS)
+2. Write a function to calculate simple interest. (TSRS)
+3. Write a function to check whether a given number is even or odd. Return 1 if the
+number is even, otherwise return 0. (TSRS)
+4. Write a function to print first N natural numbers (TSRN)
+5. Write a function to print first N odd natural numbers. (TSRN)
+6. Write a function to calculate the factorial of a number. (TSRS)
+7. Write a function to calculate the number of combinations one can make from n items
+and r selected at a time. (TSRS)
+8. Write a function to calculate the number of arrangements one can make from n items
+and r selected at a time. (TSRS)
+9. Write a function to check whether a given number contains a given digit or not.
+(TSRS)
+10. Write a function to print all prime factors of a given number. For example, if the
+number is 36 then your result should be 2, 2, 3, 3. (TSRN)
+
+
+Solutions: 
+
+Ans-1:  #include<stdio.h>
+
+        float ar(int r){
+            return (3.1415*r*r);
+        }
+
+        int main(){
+        
+                int radius;
+                printf("Enter the radius of the circle: ");
+                scanf("%d",&radius);
+                printf("Area of the circle is : %0.2f\n",ar(radius));
+        
+            return 0;
+        }
+
+Ans-2:  #include<stdio.h>
+
+        float si(float p,float r,float t){
+            return ((p*r*t)/100);
+        }
+
+        int main(){
+        
+                float p,r,t;
+                printf("Enter principle,rate and time: ");
+                scanf("%f%f%f",&p,&r,&t);
+                printf("Simple interest is : %0.2f\n",si(p,r,t));
+        
+            return 0;
+        }
+
+Ans-3:  #include<stdio.h>
+
+        int check(int n){
+            if(n%2)     return 0;
+            else        return 1;
+        }
+
+        int main(){
+        
+                int num;
+                printf("Enter the number: ");
+                scanf("%d",&num);
+                if(check(num)){
+                    printf("Even\n");
+                }
+                else{
+                    printf("Odd\n");
+                }
+
+            return 0;
+        }
+
+Ans-4:  #include<stdio.h>
+
+        void printN(int n){
+            for(int i=1;i<=n;i++){
+                printf("%d ",i);
+            }
+        }
+
+        int main(){
+        
+                int n;
+                printf("Enter the value n: ");
+                scanf("%d",&n);
+                printN(n);
+
+            return 0;
+        }
+
+Ans-5:  #include<stdio.h>
+
+        void printN(int n){
+            for(int i=1;i<=n;i++){
+                printf("%d ",(2*i-1));
+            }
+        }
+
+        int main(){
+        
+                int n;
+                printf("Enter the value n: ");
+                scanf("%d",&n);
+                printN(n);
+
+            return 0;
+        }
+
+Ans-6:  #include<stdio.h>
+
+        int fact(int n){
+            int fact=1;
+            for(int i=2;i<=n;i++){
+                fact = fact*i;
+            }
+            return fact;
+        }
+
+        int main(){
+        
+                int n;
+                printf("Enter the value n: ");
+                scanf("%d",&n);
+                printf("factorial of %d is %d\n",n,fact(n));
+
+            return 0;
+        }
+
+Ans-7:  #include<stdio.h>
+
+        int fact(int n){
+            int fact=1;
+            for(int i=2;i<=n;i++){
+                fact = fact*i;
+            }
+            return fact;
+        }
+
+        int comb(int n,int r){
+            return ((fact(n))/(fact(n-r)*fact(r)));
+        }
+
+        int main(){
+        
+                int n,r;
+                printf("Enter the value n: ");
+                scanf("%d",&n);
+                printf("Enter the value r: ");
+                scanf("%d",&r);
+                printf("Total number of possible combinations are %d\n",comb(n,r));
+
+            return 0;
+        }
+
+Ans-8:  #include<stdio.h>
+
+        int fact(int n){
+            int fact=1;
+            for(int i=2;i<=n;i++){
+                fact = fact*i;
+            }
+            return fact;
+        }
+
+        int comb(int n,int r){
+            return ((fact(n))/(fact(n-r)));
+        }
+
+        int main(){
+        
+                int n,r;
+                printf("Enter the value n: ");
+                scanf("%d",&n);
+                printf("Enter the value r: ");
+                scanf("%d",&r);
+                printf("Total number of possible arrangements are %d\n",comb(n,r));
+
+            return 0;
+        }
+
+Ans-9:  #include<stdio.h>
+
+        int checkDigit(int n,int d){
+            int x;
+            if(n==0 && d==0){
+                return 1;
+            }
+            while(n!=0){
+                if(n<0){
+                    n = n*-1;
+                }
+                x = n%10;
+                if(x==d){
+                    return 1;
+                }
+                n = n/10;
+            }
+            return 0;
+        }
+
+        int main(){
+        
+            int num,digit;
+            printf("Enter a number: ");
+            scanf("%d",&num);
+            printf("Enter the digit: ");
+            scanf("%d",&digit);
+            if(checkDigit(num,digit)){
+                printf("%d is present in number %d\n",digit,num);
+            }
+            else{
+                printf("Not found\n");
+            }
+
+            return 0;
+        }
+
+Ans-10:  #include<stdio.h>
+
+        int isPrime(int n){
+            if(n<=0){
+                return 0;
+            }
+            for(int i=2;i<=n/2;i++){
+                if(n%i==0){
+                    return 0;
+                }
+            }
+            return 1;
+        }
+
+        int main(){
+        
+            int num,i;
+            printf("Enter a number: ");
+            scanf("%d",&num);
+            for(i=2;i<=num;i++){
+                if(num%i==0 && isPrime(i)){
+                    printf("%d ",i);
+                    num = num/i;
+                    i--;
+                }
+            }
+
+            return 0;
+        }
